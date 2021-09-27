@@ -1,0 +1,21 @@
+{
+  "name": "esbuild-ethereal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.13.2"
+  },
+  "dependencies": {
+    "ethereal": "^2.0.33",
+    "htm": "^3.1.0",
+    "preact": "^10.5.14",
+    "three": "^0.132.2"
+  }
+}

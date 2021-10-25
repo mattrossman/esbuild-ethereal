@@ -5,6 +5,7 @@ const { options } = require("./common")
 esbuild
   .build({
     ...options,
+    entryPoints: ["src/index.jsx"],
     outdir: "public/build",
     watch: true,
   })

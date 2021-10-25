@@ -5,10 +5,10 @@ const time = Date.now()
 esbuild
   .build({
     ...options,
+    entryPoints: ["src/hubs.jsx"],
     outdir: "build",
     minify: true,
     metafile: true,
-    external: ["three"],
   })
   .then((result) => {
     const diff = Date.now() - time

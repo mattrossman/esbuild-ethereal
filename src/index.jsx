@@ -2,14 +2,14 @@ import { useState } from "react"
 import { render } from "react-dom"
 import { Counter } from "@/components/Counter"
 import { PreviewSplit } from "@/util/Preview"
+import { Trello } from "@/components/Trello"
 
 render(<App />, document.body)
 
 function App() {
-  const [state, setState] = useState({ count: 0 })
   return (
     <PreviewSplit>
-      <Counter state={state} setState={setState} />
+      <Trello boardId="612d1d5d76abff8a743892e3" />
       <link rel="stylesheet" href="/build/index.css" />
     </PreviewSplit>
   )

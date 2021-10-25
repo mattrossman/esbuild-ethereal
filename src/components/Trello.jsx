@@ -17,12 +17,12 @@ export function Trello({ boardId }) {
   return (
     <div class="grid grid-flow-col auto-cols-fr gap-3 items-start">
       {board?.map((list) => (
-        <div class="bg-gray-300 rounded-lg px-2 py-3">
+        <div class="bg-gray-300 rounded-lg px-2 py-3 w-[272px]">
           <h1 class="font-bold mx-1 mb-2">{list.name}</h1>
           <ul class="flex flex-col gap-1">
             {list.cards.map((card) => (
-              <li class="bg-gray-100 rounded p-2 shadow-sm text-sm">
-                <p>{card.name}</p>
+              <li xr-layer class="bg-gray-100 rounded p-2 shadow-sm text-sm">
+                <p class="mb-1">{card.name}</p>
                 <div class="flex">
                   {card.badges.description && <Badge>≡</Badge>}
                   {card.badges.comments > 0 && (

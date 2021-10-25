@@ -27,7 +27,6 @@ export function PreviewEthereal({ stylesheet, children }) {
     const layerEl = document.createElement("div")
     layerEl.setAttribute("style", "display: inline-block")
     layerEl.setAttribute("xr-pixel-ratio", 2)
-    const linkEl = document.createElement("link")
     return layerEl
   })
 

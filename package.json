@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node scripts/dev.js & tailwindcss --watch -o public/build/index.css",
-    "build": "node scripts/build.js && tailwindcss -o build/index.css"
+    "build": "node scripts/build.js && tailwindcss -o build/index.css",
+    "serve": "live-server --cors ./build",
+    "tunnel": "ngrok http 8080 --subdomain mattrossman"
   },
   "keywords": [],
   "author": "",

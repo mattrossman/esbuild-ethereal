@@ -8,7 +8,6 @@ module.exports.options = {
   bundle: true,
   inject: [path.resolve(__dirname, "./react-inject.js")],
   plugins: [
-    stylePlugin(),
     alias({
       "@": path.resolve(__dirname, "../"),
       react: require.resolve("preact/compat"),

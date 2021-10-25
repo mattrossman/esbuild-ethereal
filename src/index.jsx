@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { render } from "react-dom"
 import { Counter } from "./components/Counter"
-import "modern-normalize/modern-normalize.css"
 
 render(<App />, document.body)
 

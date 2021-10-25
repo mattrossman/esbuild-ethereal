@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node scripts/dev.js",
-    "build": "node scripts/build.js"
+    "dev": "node scripts/dev.js & tailwindcss --watch -o public/build/index.css",
+    "build": "node scripts/build.js && tailwindcss -o build/index.css"
   },
   "keywords": [],
   "author": "",
@@ -15,12 +15,11 @@
     "esbuild-plugin-alias": "^0.2.0",
     "esbuild-style-plugin": "^1.0.13",
     "live-server": "^1.2.1",
-    "sass": "^1.43.3"
+    "tailwindcss": "^2.2.17"
   },
   "dependencies": {
     "ethereal": "^2.0.33",
     "htm": "^3.1.0",
-    "modern-normalize": "^1.1.0",
     "preact": "^10.5.14",
     "three": "^0.132.2"
   }

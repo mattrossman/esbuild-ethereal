@@ -1,0 +1,13 @@
+.container {
+  border: solid 2px black;
+  border-radius: 4px;
+  padding: 4px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 12rem;
+  height: 8rem;
+}
+
+:local h1 {
+  margin: 0;
+  padding: 0;
+}

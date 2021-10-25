@@ -1,13 +1,14 @@
 const esbuild = require("esbuild")
+const { options } = require("./common")
 
 const time = Date.now()
 esbuild
   .build({
-    entryPoints: ["src/index.js"],
-    bundle: true,
+    ...options,
     outdir: "build",
     minify: true,
     metafile: true,
+    external: ["three"],
   })
   .then((result) => {
     const diff = Date.now() - time

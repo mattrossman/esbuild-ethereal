@@ -1,12 +1,12 @@
 const esbuild = require("esbuild")
 const server = require("live-server")
+const { options } = require("./common")
 
 esbuild
   .build({
-    entryPoints: ["src/index.js"],
-    bundle: true,
-    watch: true,
+    ...options,
     outdir: "public/build",
+    watch: true,
   })
   .then(() => {
     server.start({

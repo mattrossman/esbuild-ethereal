@@ -52,7 +52,7 @@ export function PreviewEthereal({ stylesheet, children }) {
           this.scene.environment = this.scene.background = envMap
 
           // Layer
-          this.layer = new WebLayer3D(layerEl, { textureEncoding: THREE.sRGBEncoding })
+          this.layer = new WebLayer3D(layerEl, { textureEncoding: THREE.sRGBEncoding, autoRefresh: true })
           this.layer.scale.setScalar(10)
           this.layer.interactionRays = [this.raycaster.ray]
           this.scene.add(this.layer)

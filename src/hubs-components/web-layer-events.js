@@ -24,11 +24,13 @@ AFRAME.registerComponent("web-layer-events", {
     // Finally, we'll redirect the "interact" events as custom "click" events on the hit element
     this.el.object3D.addEventListener("interact", (e) => {
       // Look for any non-null hit across all raycasters
-      const hit = layer.interactionRays.map((ray) => layer.hitTest(ray)).find((x) => x)
-      if (hit) {
-        hit.target.dispatchEvent(new CustomEvent("click", e))
-        hit.target.focus()
-      }
+      layer.interactionRays.forEach((ray) => {
+        const hit = layer.hitTest(ray)
+        if (hit) {
+          hit.target.dispatchEvent(new CustomEvent("click", e))
+          hit.target.focus()
+        }
+      })
     })
   },
 })

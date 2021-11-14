@@ -5,7 +5,7 @@ const { options } = require("./common")
 esbuild
   .build({
     ...options,
-    entryPoints: ["src/index.jsx"],
+    entryPoints: ["src/index.jsx", "src/hubs.jsx"],
     outdir: "public/build",
     watch: true,
   })
@@ -14,5 +14,6 @@ esbuild
       port: 8080,
       root: "public",
       open: false,
+      cors: true,
     })
   })

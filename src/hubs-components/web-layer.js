@@ -17,6 +17,7 @@ AFRAME.registerComponent("web-layer", {
     linkEl.rel = "stylesheet"
     linkEl.href = new URL("./index.css", import.meta.url)
     this.layerEl.appendChild(linkEl)
+    console.log("adding weblayer stylesheet:", linkEl.href)
 
     this.layer = new WebLayer3D(this.layerEl, { textureEncoding: THREE.sRGBEncoding })
     this.layer.scale.setScalar(10)

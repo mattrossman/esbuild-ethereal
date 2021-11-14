@@ -4,7 +4,7 @@ specifiers:
   esbuild: ^0.13.2
   esbuild-plugin-alias: ^0.2.0
   esbuild-style-plugin: ^1.0.13
-  ethereal: ^2.0.33
+  ethereal: ^2.1.2
   htm: ^3.1.0
   live-server: ^1.2.1
   preact: ^10.5.14
@@ -13,7 +13,7 @@ specifiers:
   three: ^0.132.2
 
 dependencies:
-  ethereal: 2.0.33_three@0.132.2
+  ethereal: 2.1.2_three@0.132.2
   htm: 3.1.0
   preact: 10.5.14
   socket.io-client: 4.1.3
@@ -49,8 +49,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@etherealjs/core/2.0.33_three@0.132.2:
-    resolution: {integrity: sha512-AmziJkHe0wi4P52STbeUtehwFOybo1Z6f51SOU0YkY9c44CvpenXd4QAREi+UaPywaLynQuq06DE9tgJQDNwIQ==}
+  /@etherealjs/core/2.1.2_three@0.132.2:
+    resolution: {integrity: sha512-pC1+HFje4WNwiI5Z6Ftow26HZ4WQ1IzC0Gts6XYxw0WBwOpd347L37euZ2DAwoDiHOY6tHAUKggO0dbikiwNtg==}
     peerDependencies:
       three: '>=0.122.0'
     dependencies:
@@ -59,8 +59,8 @@ packages:
       three: 0.132.2
     dev: false
 
-  /@etherealjs/web-layer/2.0.33_three@0.132.2:
-    resolution: {integrity: sha512-9EcSEtuHEOctKBx3BaDqNeya+nQJVYMMK+M7jJtYs6uQhL3JMzJzuduzt+T/cuDFyDqlLEoRRg1xQrdI7Ko0oQ==}
+  /@etherealjs/web-layer/2.1.2_three@0.132.2:
+    resolution: {integrity: sha512-cN5JisrNUZp5mEbATMiRNtS9ng8HOeTbKE3mNwFOxvuJLBDkZSQx0n/oPO8qy9iNc/dnV8S0HzpCXdV5fzw22w==}
     peerDependencies:
       three: '>=0.122.0'
     dependencies:
@@ -852,13 +852,13 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /ethereal/2.0.33_three@0.132.2:
-    resolution: {integrity: sha512-Zmoctt9xM6A5jM/te4kjuzANJQ3lDvAcfP4WeYwx6mperRzsbQqHJ/3JYDCpU5xpHS2YqDkABcGm71Txr+xHNg==}
+  /ethereal/2.1.2_three@0.132.2:
+    resolution: {integrity: sha512-0g+tAPvlXUr/rwwoUMCZ70OpSNLK2uDWIDDhHScBXGcFTl43K76a5uAuliP8+iSgjgRAH3WsNHp2Clxq1VrFBw==}
     peerDependencies:
       three: '>=0.122.0'
     dependencies:
-      '@etherealjs/core': 2.0.33_three@0.132.2
-      '@etherealjs/web-layer': 2.0.33_three@0.132.2
+      '@etherealjs/core': 2.1.2_three@0.132.2
+      '@etherealjs/web-layer': 2.1.2_three@0.132.2
       three: 0.132.2
     dev: false
 

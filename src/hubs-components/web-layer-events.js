@@ -27,7 +27,7 @@ AFRAME.registerComponent("web-layer-events", {
       layer.interactionRays.forEach((ray) => {
         const hit = layer.hitTest(ray)
         if (hit) {
-          hit.target.dispatchEvent(new CustomEvent("click", e))
+          hit.target.click()
           hit.target.focus()
         }
       })

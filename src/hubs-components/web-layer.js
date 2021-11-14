@@ -19,11 +19,9 @@ AFRAME.registerComponent("web-layer", {
     this.layerEl.appendChild(linkEl)
     console.log("adding weblayer stylesheet:", linkEl.href)
 
-    this.layer = new WebLayer3D(this.layerEl, { textureEncoding: THREE.sRGBEncoding })
+    this.layer = new WebLayer3D(this.layerEl, { textureEncoding: THREE.sRGBEncoding, autoRefresh: true })
     this.layer.scale.setScalar(10)
     this.el.setObject3D("webLayer3D", this.layer)
   },
-  tick: function () {
-    this.layer.update()
-  },
+  tick: function () {},
 })

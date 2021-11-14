@@ -21,7 +21,14 @@ export function Trello({ boardId }) {
           <h1 class="font-bold mx-1 mb-2">{list.name}</h1>
           <ul class="flex flex-col gap-1">
             {list.cards.map((card) => (
-              <li xr-layer class="bg-gray-100 rounded p-2 shadow-sm text-sm">
+              <li
+                xr-layer
+                class="bg-gray-100 rounded p-2 shadow-sm text-sm"
+                onClick={(e) => {
+                  console.log("click")
+                  window.selectedLayer = e.currentTarget
+                }}
+              >
                 <p class="mb-1">{card.name}</p>
                 <div class="flex">
                   {card.badges.description && <Badge>≡</Badge>}

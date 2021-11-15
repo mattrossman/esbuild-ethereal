@@ -35,6 +35,7 @@ AFRAME.registerComponent("trello-board", {
 
     this.dragLayer = null
     this.dragCursor = null
+    this.dragCursorController = null
     this.dragOffset = new THREE.Vector3()
 
     // Set up handlers for those events we enabled earlier
@@ -44,7 +45,9 @@ AFRAME.registerComponent("trello-board", {
           const hit = layer.hitTest(cursorController.raycaster.ray)
           if (hit && hit.layer.element.dataset.type === "card") {
             this.dragLayer = hit.layer
+            window.dragLayer = hit.layer
             this.dragCursor = cursor.object3D
+            this.dragCursorController = cursorController
 
             // Get cursor position in local layer space
             cursorLocalPos.copy(this.dragCursor.position)
@@ -56,7 +59,19 @@ AFRAME.registerComponent("trello-board", {
       })
     })
     this.el.object3D.addEventListener("holdable-button-up", () => {
-      this.dragLayer = null
+      if (this.dragLayer) {
+        const listLayers = [...layer.rootLayer.element.querySelectorAll('[data-type="list"]')].map(
+          (el) => el.layer.contentMesh
+        )
+        const intersections = this.dragCursorController.raycaster.intersectObjects(listLayers)
+        if (intersections.length > 0) {
+          const listEl = intersections[0].object.parent.element
+          const listId = listEl.dataset.id
+          console.log(`Dropping onto list ${listId}`)
+          // TODO: send card update request over socket
+        }
+        this.dragLayer = null
+      }
     })
   },
   tick: function () {

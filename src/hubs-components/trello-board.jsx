@@ -1,4 +1,5 @@
 import { render } from "react-dom"
+import { WebLayer3D } from "ethereal"
 import { Trello } from "@/components/Trello"
 import "./web-layer"
 import "./web-layer-events"
@@ -12,6 +13,7 @@ AFRAME.registerComponent("trello-board", {
   },
   init: function () {
     this.webLayerComponent = this.el.components["web-layer"]
+    /** @type {WebLayer3D} */
     const layer = this.webLayerComponent.layer
     this.layer = layer
     render(<Trello boardId={this.data.boardId} />, this.webLayerComponent.rootEl)
@@ -40,9 +42,8 @@ AFRAME.registerComponent("trello-board", {
       cursorControllers.forEach((cursorController) => {
         if (cursorController.enabled) {
           const hit = layer.hitTest(cursorController.raycaster.ray)
-          if (hit) {
+          if (hit && hit.layer.element.dataset.type === "card") {
             this.dragLayer = hit.layer
-            // hit.target contains the associated dragged DOM element
             this.dragCursor = cursor.object3D
 
             // Get cursor position in local layer space

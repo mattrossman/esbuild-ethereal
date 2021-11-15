@@ -80,6 +80,10 @@ AFRAME.registerComponent("trello-board", {
           const cardId = this.dragLayer.element.dataset.id
           console.log(`Dropping card ${cardId} onto list ${listId}`)
           this.moveCardToList(cardId, listId)
+
+          // Ethereal doesn't remove the old layer, need to manually remove it
+          this.dragLayer.parent.remove(this.dragLayer)
+          this.dragLayer.dispose()
         }
         this.dragLayer = null
       }

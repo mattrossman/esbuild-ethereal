@@ -3,7 +3,7 @@ import { io } from "socket.io-client"
 
 const server = "https://cisco-trello-server.herokuapp.com/"
 
-function useRealtimeBoard(boardId) {
+export function useRealtimeBoard(boardId) {
   const [board, setBoard] = useState(null)
   useEffect(() => {
     const socket = io(server + boardId)
@@ -12,8 +12,7 @@ function useRealtimeBoard(boardId) {
   return board
 }
 
-export function Trello({ boardId }) {
-  const board = useRealtimeBoard(boardId)
+export function Trello({ board }) {
   return (
     <div class="grid grid-flow-col auto-cols-fr gap-3 items-start">
       {board?.map((list) => (

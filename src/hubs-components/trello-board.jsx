@@ -1,5 +1,6 @@
 import { render } from "react-dom"
 import { WebLayer3D } from "ethereal"
+import { io } from "socket.io-client"
 import { Trello } from "@/components/Trello"
 import "./web-layer"
 import "./web-layer-events"
@@ -12,11 +13,20 @@ AFRAME.registerComponent("trello-board", {
     boardId: { type: "string" },
   },
   init: function () {
+    // WebLayer3D setup
     this.webLayerComponent = this.el.components["web-layer"]
     /** @type {WebLayer3D} */
     const layer = this.webLayerComponent.layer
     this.layer = layer
-    render(<Trello boardId={this.data.boardId} />, this.webLayerComponent.rootEl)
+
+    // Socket.io setup
+    this.board = null
+    this.socket = io(`https://cisco-trello-server.herokuapp.com/${this.data.boardId}`)
+    this.socket.on("message", (board) => {
+      console.log(board)
+      this.board = board
+      this.renderBoard(board)
+    })
 
     // Left and right cursor components (mouse acts as right cursor on desktop)
     const cursorControllers = [...document.querySelectorAll("[cursor-controller]")].map(
@@ -67,12 +77,33 @@ AFRAME.registerComponent("trello-board", {
         if (intersections.length > 0) {
           const listEl = intersections[0].object.parent.element
           const listId = listEl.dataset.id
-          console.log(`Dropping onto list ${listId}`)
-          // TODO: send card update request over socket
+          const cardId = this.dragLayer.element.dataset.id
+          console.log(`Dropping card ${cardId} onto list ${listId}`)
+          this.moveCardToList(cardId, listId)
         }
         this.dragLayer = null
       }
     })
+  },
+  renderBoard: function (board) {
+    render(<Trello board={board} />, this.webLayerComponent.rootEl)
+  },
+  moveCardToList: function (cardId, listId) {
+    // Re-render locally immediately
+    const newList = this.board.find((list) => list.id === listId)
+    for (const oldList of this.board) {
+      const cardIndex = oldList.cards.findIndex((card) => card.id === cardId)
+      if (cardIndex >= 0) {
+        const card = oldList.cards[cardIndex]
+        oldList.cards.splice(cardIndex, 1)
+        newList.cards.push(card)
+        this.renderBoard(this.board)
+        break
+      }
+    }
+
+    // Send update over network
+    this.socket.emit("moveCardToList", cardId, listId)
   },
   tick: function () {
     if (this.dragLayer) {

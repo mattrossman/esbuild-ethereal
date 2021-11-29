@@ -1,17 +1,23 @@
-import { useState } from "react"
+import { useState, useRef, createPortal } from "react"
 import { render } from "react-dom"
 import { Counter } from "@/components/Counter"
 import { PreviewSplit } from "@/util/Preview"
 import { Trello, useRealtimeBoard } from "@/components/Trello"
+import { StickyNote } from "@/components/StickyNote"
+import { OffscreenInput } from "@/components/OffscreenInput"
 
 render(<App />, document.body)
 
 function App() {
-  const board = useRealtimeBoard("612d1d5d76abff8a743892e3")
+  const input = useRef()
+  const [value, setValue] = useState()
   return (
-    <PreviewSplit>
-      <Trello board={board} />
-      <link rel="stylesheet" href="/build/index.css" />
-    </PreviewSplit>
+    <>
+      <OffscreenInput ref={input} value={value} onChange={(e) => setValue(e.target.value)} />
+      <PreviewSplit>
+        <StickyNote onClick={() => input.current.focus()}>{value}</StickyNote>
+        <link rel="stylesheet" href="/build/index.css" />
+      </PreviewSplit>
+    </>
   )
 }
